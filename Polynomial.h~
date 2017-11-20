@@ -1,0 +1,95 @@
+/** file name -- Polynomial.h */
+
+
+#include "list.h"
+
+#ifndef Polynomial_class_
+#define Polynomial_class_
+
+
+
+
+class Polynomial : public List<double>
+{
+   public:
+
+      /** invoke list constructor.
+       * @pre  none.
+       * @post list constructor is invoked. */
+      Polynomial();
+
+      /** copy the content of source to the current
+       *  polynomial.
+       * @param  source a Polynomial object.
+       * @pre    none.
+       * @post   content of source is copied to the current
+       *         polynomial.
+       * @return none. */
+      Polynomial(const Polynomial &source);
+
+      /** return the order of the current polynomial.
+       * @pre     none.
+       * @post    order of the current polynomial is returned
+       *          to the system.
+       * @return  order of the current polynomial. */
+      int getOrder();
+
+      /** add other polynomial function to the current
+       *  one and return the resultant.
+       * @param   other a Polynomial object.
+       * @pre     none.
+       * @post    other polynomial function is added to the
+       *          current one.
+       * @return  resulting polynomial. */
+      Polynomial& operator+(Polynomial &other);
+
+      /** subtract other polynomial function to the current
+       *  one and return the resultant..
+       * @param   other a Polynomial object.
+       * @pre     none.
+       * @post    other polynomial function is subtracted
+       *          from the current one.
+       * @return  resulting polynomial. */
+      Polynomial& operator-(Polynomial &other);
+
+      /** return 1 if other polynomial is same as the current
+       *  one; otherwise, return 0.
+       * @param   other a Polynomial object.
+       * @pre     none.
+       * @post    1 is returned if other polynomial is same
+       *          as the current one; otherwise, return 0.
+       * @return  return 1 if other polynomial is same as
+       *          the current one; otherwise, return 0. */
+      int operator==(Polynomial &other);
+
+      /** assign other polynomial function to the current one
+       *  and return the resultant.
+       * @param   other a Polynomial object.
+       * @pre     none.
+       * @post    the other polynomial function is assigned to
+       *          the current one and the resultant is
+       *          returned.
+       * @return  resulting polynomial. */
+      Polynomial& operator=(Polynomial &other);
+
+      /** display the polynomial in a polynomial form as shown
+          below:
+          2 + 3*x - 2*x**2 + 4*x**3; only non-zero terms are
+          displayed.
+       * @pre     none.
+       * @post    the polynomial is displayed in polynomial
+       *          form. */
+      void display();
+
+   private:
+
+      void add(Polynomial& object, Polynomial *sum, int upperBound, int& index);
+
+      void diff(Polynomial& object, Polynomial *diff, int upperBound, int& index);
+
+      int changeSign(Polynomial& object);
+
+   
+}; // end of class Polynomial
+
+#endif

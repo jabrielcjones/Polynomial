@@ -1,0 +1,9 @@
+a.out: ListA.o driver.o
+	c++ ListA.o driver.o
+
+ListA.o: ListA.cpp ListA.h
+	c++ -c ListA.cpp
+
+driver.o: driver.cpp ListA.o
+	c++ -c driver.cpp
+
